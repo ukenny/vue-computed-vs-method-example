@@ -1,7 +1,10 @@
 <template>
   <div id="helloWorld">
-    <input type="text" v-model="name" />
-    <p>{{ name }}</p>
+    <button v-on:click="counter++">Increase</button>
+    <button v-on:click="counter--">Decrease</button>
+    <button v-on:click="secondCounter++">Increase Second Counter</button>
+    <p>Counter: {{ counter }} | {{ secondCounter }}</p>
+    <p>Result: {{ result() }} | {{ output }}</p>
   </div>
 </template>
 
@@ -10,16 +13,29 @@ export default {
   name: "HelloWorld",
   data: function() {
     return {
-      name: String
+      counter: Number,
+      secondCounter: Number
     };
   },
   created: function() {
-    this.name = "Kenny";
+    this.counter = 0;
+    this.secondCounter = 0;
   },
   props: {
     msg: String
   },
-  methods: {}
+  computed: {
+    output: function() {
+      console.log("\n-----Computed-----");
+      return this.counter > 5 ? "Greater than 5" : "Equal to or less than 5";
+    }
+  },
+  methods: {
+    result: function() {
+      console.log("\n*****Method*****");
+      return this.counter > 5 ? "Greater than 5" : "Equal to or less than 5";
+    }
+  }
 };
 </script>
 
