@@ -6,7 +6,10 @@
     <p>
       {{ counter }}
     </p>
-    <p v-on:mousemove="updateCoordinates">({{ x }}, {{ y }})</p>
+    <p v-on:mousemove="updateCoordinates">
+      ({{ x }}, {{ y }})
+      <span v-on:mousemove="dummy">DEAD ZONE</span>
+    </p>
   </div>
 </template>
 
@@ -36,6 +39,9 @@ export default {
     updateCoordinates: function(event) {
       this.x = event.clientX;
       this.y = event.clientY;
+    },
+    dummy: function(event) {
+      event.stopPropagation();
     }
   }
 };
