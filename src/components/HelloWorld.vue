@@ -4,7 +4,7 @@
     <button v-on:click="counter--">Decrease</button>
     <button v-on:click="secondCounter++">Increase Second Counter</button>
     <p>Counter: {{ counter }} | {{ secondCounter }}</p>
-    <p>Result: {{ result() }} | {{ output }}</p>
+    <p>Result (of <code>counter</code>): {{ result() }} | {{ output }}</p>
   </div>
 </template>
 
