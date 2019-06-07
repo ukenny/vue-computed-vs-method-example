@@ -10,6 +10,7 @@
       ({{ x }}, {{ y }})
       <span v-on:mousemove.stop>DEAD ZONE</span>
     </p>
+    <input type="text" v-on:keyup.enter="alertMe" />
   </div>
 </template>
 
@@ -39,6 +40,9 @@ export default {
     updateCoordinates: function(event) {
       this.x = event.clientX;
       this.y = event.clientY;
+    },
+    alertMe: function() {
+      alert("Alert!");
     }
   }
 };
