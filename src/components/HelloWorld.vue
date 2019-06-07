@@ -1,17 +1,20 @@
 <template>
-  <div>
-    <button v-on:click="increase(2, $event)">
-      Click Me
-    </button>
-    <p>
-      {{ counter }}
-    </p>
-    <p v-on:mousemove="updateCoordinates">
-      ({{ x }}, {{ y }})
-      <span v-on:mousemove.stop>DEAD ZONE</span>
-    </p>
-    <input type="text" v-on:keyup.enter="alertMe" />
-  </div>
+  <div id="exercise">
+    <!-- 1) Show an alert when the Button gets clicked -->
+    <div>
+        <button v-on:click="alertMe">Show Alert</button>
+    </div>
+    <!-- 2) Listen to the "keydown" event and store the value in a data property (hint: event.target.value gives you the value) -->
+    <div>
+        <input type="text" v-on:keydown="value = $event.target.value">
+        <p>{‌{ value }}</p>
+    </div>
+    <!-- 3) Adjust the example from 2) to only fire if the "key down" is the ENTER key -->
+    <div>
+        <input type="text" v-on:keydown.enter="value = $event.target.value">
+        <p>{‌{ value }}</p>
+    </div>
+</div>
 </template>
 
 <script>
@@ -19,31 +22,17 @@ export default {
   name: "HelloWorld",
   data: function() {
     return {
-      counter: Number,
-      x: Number,
-      y: Number
+      value: String
     };
   },
   created: function() {
-    this.counter = 0;
-    this.x = 0;
-    this.y = 0;
+    value = "";
   },
   props: {
     msg: String
   },
   methods: {
-    // eslint-disable-next-line
-    increase: function(step, event) {
-      this.counter += step;
-    },
-    updateCoordinates: function(event) {
-      this.x = event.clientX;
-      this.y = event.clientY;
-    },
-    alertMe: function() {
-      alert("Alert!");
-    }
+    
   }
 };
 </script>
